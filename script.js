@@ -1,7 +1,9 @@
 //Start server side options
 var playerchoice;
 
-playerchoice = prompt("Would you like to play a game?")
+alert("Would you like to play a game")
+
+playerchoice = prompt("Rock, Paper, Scissors.\nType R, P, S to play.")
 
 //Computer side
 var compchoice;
