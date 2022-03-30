@@ -3,8 +3,19 @@ var playerchoice = "";
 var playerchoiceStr;
 var wantstoplay = false
 
+//set up win/tie/loss variables
+var win
+var lost
+var tie
+
+//check if the player wants to play, store this to wantstoplay variable
 wantstoplay = confirm("Would you like to play a game");
+
+//if the player wants to play, we will play the game within this while loop
 while (wantstoplay){
+
+    //this correct responses array will let us know which reponses are allowed
+    //for the player and we will use this as a reference later
     var correctResponsesArray = ["R", "r", "P", "p", "S", "s"];
 
     //here we have a while loop with the condition that while
@@ -42,14 +53,50 @@ while (wantstoplay){
     } else {
         compchoiceStr = "scissors";
     }
-    console.log(compchoiceStr);
 
-    //
-    var win
-    var lost
-    var tie
+    //these if statements will let us know if the player won/lost or tied
+    //with the computer
 
-    if (playerchoiceStr === "rock" && compchoiceStr === "scissors") {
+    //this first one checks if they are equal, if so this is a tie
+    if (playerchoiceStr === compchoiceStr) {
+        //increment the tie score by 1 with the ++ notation
+        tie++;
 
+        //alert the user of the tie
+        alert("Wow!! You tied! Both you and the computer chose " + playerchoiceStr + ".");
+
+    //the following else if statements check all the win conditions
+    //if any of these are true then increment the win score by 1 with ++ notation
+    } else if (playerchoiceStr === "rock" && compchoiceStr === "scissors") {
+        win++;
+        
+        //alert the user of the win
+        alert("Wow!! You won!\nYou chose: " + playerchoiceStr + ".\nThe computer chose: " + compchoiceStr + ".");
+
+    } else if (playerchoice === "scissors" && compchoiceStr === "paper") {
+        win++;
+
+        //alert the user of the win
+        alert("Wow!! You won!\nYou chose: " + playerchoiceStr + ".\nThe computer chose: " + compchoiceStr + ".");
+
+    } else if (playerchoice === "paper" && compchoiceStr === "rock") {
+        win++;
+
+        //alert the user of the win
+        alert("Wow!! You won!\nYou chose: " + playerchoiceStr + ".\nThe computer chose: " + compchoiceStr + ".");
+
+    //if you did not win, and it is not a tie, then it has to be a loss
+    //so we increment the loss counter here
+    } else {
+        lost++;
+
+        //alert the user of the loss
+        alert("Oh no!! You lost!\nYou chose: " + playerchoiceStr + ".\nThe computer chose: " + compchoiceStr + ".");
     }
+
+    //this will check if the user wants to play again and if not will update the wantstoplay variable
+    wantstoplay = confirm("Would you like to play again?");
+
+    //this will reset the playerchoice variable for the next game if they choose to play again
+    playerchoice = "";
 }
